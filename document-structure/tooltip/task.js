@@ -36,18 +36,9 @@ for (link of links) {
         if (this.nextElementSibling) {
             if (this.nextElementSibling.classList.contains('tooltip_active')) {
                 this.nextElementSibling.remove();
-            } else {
-                removeAll();
-                createTooltip(this, this.title, coords.top, coords.left);
-            }
-        } else {
-            const activeTooltips = document.querySelectorAll('.tooltip_active');
-            if (activeTooltips.length != 0) {
-                removeAll();
-                createTooltip(this, this.title, coords.top, coords.left);
-            } else {
-                createTooltip(this, this.title, coords.top, coords.left);
-            }
-        }  
+            } 
+        } 
+        removeAll()
+        createTooltip(this, this.title, coords.top, coords.left);
     });
 };

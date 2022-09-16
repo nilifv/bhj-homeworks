@@ -1,6 +1,7 @@
 const inputField = document.getElementById('task__input');
 const addBtn = document.getElementById('tasks__add');
 const taskList = document.getElementById('tasks__list');
+const taskRemove = document.querySelector('.task__remove')
 
 function addingTask(task) {
     let taskTemplate = `<div class="task">
@@ -15,18 +16,15 @@ function addingTask(task) {
     inputField.value = '';
 };
 
-inputField.addEventListener('keyup', (event) => {
+addBtn.addEventListener('click', (event) => {
     event.preventDefault();
-    if (event.key.toLowerCase() === 'enter' && inputField.value != '') {
-        inputField.value = inputField.value.trim();
+    if (inputField.value.trim() != '') {
         addingTask(inputField.value);
     }
 });
 
-addBtn.addEventListener('click', () => {
-    event.preventDefault();
-    if (inputField.value != '') {
-        inputField.value = inputField.value.trim();
-        addingTask(inputField.value);
+taskRemove.addEventListener('click', (e) => {
+    if (e.target.classList.contains('task__remove')) {
+      e.target.closest('.task').remove();
     }
-});
+  });
