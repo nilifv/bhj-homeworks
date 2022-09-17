@@ -46,11 +46,11 @@ for (let addToCartButton of addToCartBtns) {
         const productsInCart = Array.from(document.querySelectorAll('.cart__product'));
         const currentProductID = this.closest('.product').dataset.id;
         const currentProductImg = this.closest('.product').querySelector('.product__image').src;
-        const currentProductQuantity = this.closest('.product__quantity').querySelector('.product__quantity-value').innerText;
+        const currentProductQuantity = this.closest('.product__quantity').querySelector('.product__quantity-value').textContent;
         const existedProduct = whoIsInCart(productsInCart, currentProductID);
 
         if (existedProduct) {
-            existedProduct.querySelector('.cart__product-count').innerText = currentProductQuantity;
+            existedProduct.querySelector('.cart__product-count').textContent = Number(currentProductQuantity) + Number(existedProduct.querySelector('.cart__product-count').textContent);
         } else {
             addToCart(currentProductID, currentProductImg, currentProductQuantity);
         }
